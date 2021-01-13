@@ -1,0 +1,266 @@
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <link href="Resource/fontawesome/css/all.css" rel="stylesheet">
+<style>
+
+body{
+	font-family: Arial;
+}
+
+#canvas{
+	border: solid 1px #aaa;
+	border-radius: 10px;
+	float:left;
+	margin-left: 20px;
+	width: 65% ;
+	
+}
+
+#container-code{
+	border: solid 1px #aaa;
+	border-radius: 10px;
+	width: 20%;
+	height: 550px;
+	float:left;
+	overflow-y: scroll;
+}
+
+.title input{
+	border:none;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.n-line{
+	color: #999;
+}
+
+.line{
+   font-family: "Currier";
+   width: 100%;
+   height:20px;
+   text-indent: 10px;
+   
+}
+
+.line.i{
+   background-color: #ddd;
+}
+
+.line.h{
+   background-color: #dd0;
+}
+
+.container-menu{
+	width: 100%;
+	height: 50px;
+	padding: 5px;
+}
+
+
+
+.bt{
+	border: solid 1px #aaa;
+	border-radius: 10px;
+	width: 35px;
+	height: 30px;
+	float:left;
+	font-size: 35px;
+	padding:5px;
+	padding-bottom: 10px;
+	margin-left: 5px;
+	text-align: center;
+	color:#555;
+}
+
+
+.container-mini-menu{
+	width: 100%;
+	height: 30px;
+	padding: 5px;
+}
+
+
+.mini-bt{
+	border: solid 1px #aaa;
+	border-radius: 10px;
+	 
+	color: #555;
+	margin:3px;
+	float:left;
+	padding:5px;
+}
+
+
+.bt:hover, .mini-bt:hover{
+	background-color: #aaa;
+	cursor: pointer;
+	color: #fff;
+}
+
+#container-scenes{
+	border: solid 1px #aaa;
+	border-radius: 10px;
+	width: 7%;
+	height: 550px;
+	float:left;
+	margin-left: 10px;
+	overflow-y: scroll;
+	padding: 5px;
+	font-size: 40px;
+	
+}
+
+
+
+.scene{
+	border: solid 1px #aaa;
+	border-radius: 10px;
+	width: 90%;
+	height: 50px;
+	text-align: center;
+	color: #555;
+	margin-bottom: 5px;
+}
+
+.h-scene{
+	
+	width: 90%;
+	height: 20px;
+	text-align: center;
+	color: #222;
+	font-size: 10px;
+}
+
+.scene.active{
+	color: #fff;
+	background-color: #337ab7;
+}
+
+.scene:hover{
+	background-color: #aaa;
+	cursor: pointer;
+	color: #fff;
+}
+
+.scene.active:hover{
+	background-color: #aaa;
+	cursor: pointer;
+	background-color: #286090;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<img id="direction" src="Resource/img/direction.png" style="display: none">
+
+<div class="title"> 
+	<input type="text" value="Trocando Valores de Variáveis (swap)"></input>
+</div>
+
+<div class="container-menu">
+	<div title="novo projeto" class="bt">
+		<i class="far fa-file"></i>
+	</div>
+	
+	<div title="salvar projeto" class="bt">
+		<i class="far fa-save"></i>
+	</div>
+	
+	
+	<div title="exportar como img" class="bt">
+		<i class="far fa-image"></i>
+	</div>
+	<div title="exportar visualizador" class="bt">
+		<i class="far fa-file-archive"></i>
+	</div>
+	
+	<div title="exportar json" class="bt">
+		<i class="far fa-file-code"></i>
+	</div>
+	
+</div>
+
+<div id="container-code">
+	
+	<div class="container-mini-menu">
+		
+		<div id="play-code" class="mini-bt">
+			<i class="fas fa-play"></i>
+		</div>
+		
+		<div id="stop-code" c class="mini-bt">
+		<i class="fas fa-stop"></i>
+		</div>
+		
+		<div id="prior-code" class="mini-bt">
+			<i class="fas fa-backward"></i>
+		</div>
+		
+		<div id="next-code" class="mini-bt">
+		<i class="fas fa-forward"></i>
+		</div>
+		
+		<div id="reload-code" class="mini-bt">
+			<i class="fas fa-sync"></i>
+		</div>
+	
+	</div>
+	
+	<div id="code">
+	</div>
+</div>
+<div id="container-canvas">
+	<canvas id="canvas" width="800px" height="550px"> </canvas>
+</div>
+
+<div id="container-scenes">
+	<div class="h-scene">
+	Cenas
+	</div>
+	<div class="scene">
+	1
+	</div>
+	<div class="scene">
+	2
+	</div>
+	<div class="scene">
+	3
+	</div>
+	
+	<div class="scene active">
+	+
+	</div>
+</div>
+
+
+<script src="View/main.js"></script>
+
+<script src="Model/code.js"></script>
+<script src="Model/scene.js"></script>
+<script src="Model/ball.js"></script>
+<script src="Model/retangle.js"></script>
+<script src="Model/square.js"></script>
+<script src="Model/text.js"></script>
+<script src="Model/arrow.js"></script>
+<script src="Model/animation.js"></script>
+
+
+<script src="View/formater.js"></script>
+<script src="View/render.js"></script>
+
+<script src="Resource/script/jquery-3.2.1.min.js"></script>
+<script src="View/menuedit.js"></script>
+
+
+<script>
+	main = new Main();
+	main.start();
+</script>
+
+</body>

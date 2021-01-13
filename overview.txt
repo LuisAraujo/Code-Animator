@@ -1,0 +1,15 @@
+uma tela com codigos
+(digitável)
+
+highlight no codigo e no bg
+
+a cada interação uma linha é acesa. 
+
+do outro lado um  canvas como:
+
+quadrado, retânguloo, elipses, setas, texto
+
+formas de exportação:
+
+sequencia de imagem ou video. 
+
