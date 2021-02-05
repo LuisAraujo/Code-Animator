@@ -1,15 +1,31 @@
+MODO CRIADOR
+
+painel como codigos
+(botão de add codigo no final)
+(botão de remover codigo por linha)
+
+painel de selecionar scene
+painel de visualizar layer da scene com os objetos e suas propriedades
+canvas visualizador que renderiza cada scene
+
+criador pode mover a scenes (ordem)
+criador pode apagar objetos 
+criador pode criar objetos (inicalmente só como botões (new rect, new text...)
+criador pode mover as figuras no canvas
+
+criador pode salvar projeto como zip ou xml (remover json)
+criador pode salvar imagens de cada scene
+criador pode criar novo projeto
+
+*criador pode salver video das scenes
+*criador poderá desenhar uma figura e o canvas irá reconhecer qual a figura 
+
+
+MODO VISUALIZADOR 
+
 uma tela com codigos
-(digitável)
-
 highlight no codigo e no bg
-
 a cada interação uma linha é acesa. 
-
-do outro lado um  canvas como:
-
-quadrado, retânguloo, elipses, setas, texto
-
-formas de exportação:
-
-sequencia de imagem ou video. 
-
+canvas de visualização das scenes
+importar projeto
+play, stop, skip...
