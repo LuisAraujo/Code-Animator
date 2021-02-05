@@ -160,7 +160,7 @@ body{
 <img id="direction" src="Resource/img/direction.png" style="display: none">
 
 <div class="title"> 
-	<input type="text" value="Trocando Valores de Variáveis (swap)"></input>
+	<input id="titleproject" type="text"  value="Untitle"></input>
 </div>
 
 <div class="container-menu">
@@ -239,6 +239,8 @@ body{
 </div>
 
 
+<script src="Model/reader.js"></script>
+
 <script src="View/main.js"></script>
 
 <script src="Model/code.js"></script>
@@ -258,9 +260,59 @@ body{
 <script src="View/menuedit.js"></script>
 
 
-<script>
+<script>	
+
 	main = new Main();
+	r = new Reader("teste.xml");
+	loadProject(r);
+	
+
 	main.start();
+	
+	
+	
+  
+  //loader
+  function loadProject(reader){
+	 var name = reader.getNode('name').innerHTML;
+	 $("#titleproject").val(name);
+	 var author = reader.getNode('author').innerHTML;
+	 
+	 for (var i = 0; i < reader.getSize('scenes'); i++) {
+			
+			subnode = reader.getNode('elems',i);
+			code = reader.getNode('code').innerHTML.split("@");
+			currrent_scene = main.createScene();
+			
+			main.setCode(code);
+			
+			
+			for (var j = 0; j <subnode.childNodes.length; j++){
+
+				
+				elem_type = subnode.childNodes[j].nodeName;
+				elem =  subnode.childNodes[j].innerHTML.split(";");
+				id = main.currente_id++; 
+				
+				if(elem_type == "rect"){
+					
+					currrent_scene.add( 
+						new Retangle(id, parseInt(elem[0]), parseInt(elem[1]), parseInt(elem[2]), parseInt(elem[3]), elem[4], elem[5], elem[6])
+					)
+				
+				}else if(elem_type  == "text"){
+				
+					currrent_scene.add( 
+						new Text(id, elem[0], parseInt(elem[1]), parseInt(elem[2]), parseInt(elem[3]), elem[4])
+					);
+					
+				}
+			}
+			
+			
+	  }
+  
+  }
 </script>
 
 </body>

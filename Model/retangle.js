@@ -11,13 +11,13 @@ function Retangle(id, h, w, x, y, color, bg, linew){
 
 Retangle.prototype.print = function(ctx){
 	ctx.save();
-	
+	ctx.globalAlpha = 1;
 	ctx.fillStyle= this.bg;
     ctx.fillRect(this.x, this.y, this.w  , this.h); 
 	
 	ctx.strokeStyle = this.color;
 	ctx.lineWidth = this.linew;
-	ctx.strokeRect(this.x, this.y, this.w  , this.h); 
+	ctx.strokeRect(this.x, this.y, this.w, this.h); 
 	
 	ctx.restore();
 	 

@@ -1,0 +1,65 @@
+<scene1>
+	<config><selectall>0</selectall></config>
+	<elems>
+		<rect>70;90;100;100 #000;#fff;2</rect>
+		<text>2;a;20;95;95;#000</text>
+	</elems>
+</scene1>
+
+<scene2>
+	<config><selectall>1</selectall></config>
+	<elems>
+		<text>3;10;30;125;150;#000</text>
+	</elems>
+</scene2>
+
+
+<scene3>
+	<config><selectall>1</selectall></config>
+	<elems>	 
+		<rect>70;90;200;100;#000;#fff</rect>
+		<text>b;20;200;95;#000</text>
+	</elems>
+</scene3>
+
+<scene4>
+	<config><selectall>1</selectall></config>
+	<elems>
+		 <text>20;30;225;150;#000</text>
+	</elems>
+</scene4>
+
+<scene5>
+	<config><selectall>1</selectall></config>
+	<elems>
+		<rect>70;90;300;100;#000;#fff</rect>
+		<text>c,20, 300, 95,#000</text>
+	</elems>
+</scene5>
+
+<scene6>
+	<config><selectall>1</selectall></config>
+	<elems>
+		 <text>10;30;325;150;#000</text>
+	</elems>
+</scene6>
+
+<scene7>
+	<config><selectall>1</selectall></config>
+	<elems>
+		<text>20,30,125,150,#d00;2;</text>
+	</elems>
+</scene7>
+
+
+<scene8>
+	<config><selectall>1</selectall></config>
+	<elems>
+		<text>10;30;225;150;#d00;5</text>
+	</elems>
+</scene8>
+
+
+
+
+

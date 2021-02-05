@@ -34,6 +34,7 @@ Scene.prototype.getAll = function(){
 	return this.stack;
 }
 
+
 Scene.prototype.setAll = function(stack){
 	for(var i = 0; i < stack.length; i++)
 		this.stack.push(stack[i]);
@@ -46,5 +47,6 @@ Scene.prototype.setLineCode = function(linecode){
 Scene.prototype.getLineCode = function(){	
 	return this.linecode;
 }
+
 
 
