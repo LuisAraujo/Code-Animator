@@ -1,9 +1,11 @@
-Main = function(){
+Main = function(id){
 	this.direction = document.getElementById("direction");
 	this.currentLine = 0;
 	this.scenes = [];	
 	this.code = [];
 	this.currente_id = 0;
+	this.render = null;
+	this.id = id;
 }
 
 Main.prototype.createScene = function(){
@@ -30,8 +32,19 @@ Main.prototype.setCode = function(code){
 
 Main.prototype.start = function(){
 	
-	render = new Render();
-/*
+	this.render = new Render(this.id);
+	
+	var animation = new Animation();
+	animation.setScene( this.scenes );
+	animation.setCode ( this.code );
+	
+	animation.setCurrentScene(0);	
+	this.render.setAnimation(animation);
+	
+	this.render.start( this.code );
+	
+	
+	/*
 	//var l = new Arrow(10, 20, 100, 10, "#000", 1, 0);
 	//var l2 = new Arrow(10, 20, 100, 10, "#000", 1, 0);
 	
@@ -87,14 +100,46 @@ Main.prototype.start = function(){
 	
 	this.code = new Code(["var a;","a = 10;","var b;","b = 20;","var c;","c = a;","a = b;","b = c;"]);*/
 	
-	
-	var animation = new Animation();
-	animation.setScene( this.scenes );
-	
-	animation.setCode ( this.code );
-	
-	animation.setCurrentScene(0);	
-	render.setAnimation(animation);
-	
-	render.start( this.code );
 }
+
+Main.prototype.loadProject = function(reader){
+	
+	 var name = reader.getNode('name').innerHTML;
+	 $("#titleproject"+this.id).val(name);
+	 var author = reader.getNode('author').innerHTML;
+	 
+	 for (var i = 0; i < reader.getSize('scenes'); i++) {
+			
+			subnode = reader.getNode('elems',i);
+			code = reader.getNode('code').innerHTML.split("@");
+			currrent_scene = this.createScene();
+			
+			this.setCode(code);
+			
+			
+			for (var j = 0; j <subnode.childNodes.length; j++){
+
+				
+				elem_type = subnode.childNodes[j].nodeName;
+				elem =  subnode.childNodes[j].innerHTML.split(";");
+				id = this.currente_id++; 
+				
+				if(elem_type == "rect"){
+					
+					currrent_scene.add( 
+						new Retangle(id, parseInt(elem[0]), parseInt(elem[1]), parseInt(elem[2]), parseInt(elem[3]), elem[4], elem[5], elem[6])
+					)
+				
+				}else if(elem_type  == "text"){
+				
+					currrent_scene.add( 
+						new Text(id, elem[0], parseInt(elem[1]), parseInt(elem[2]), parseInt(elem[3]), elem[4])
+					);
+					
+				}
+			}
+			
+			
+	  }
+  
+  }

@@ -2,7 +2,7 @@
 
 <head>
  <meta charset="UTF-8">
- <link href="Resource/fontawesome/css/all.css" rel="stylesheet">
+ <link href="../Resource/fontawesome/css/all.css" rel="stylesheet">
 <style>
 
 body{
@@ -157,30 +157,25 @@ body{
 </head>
 <body>
 
-<img id="direction" src="Resource/img/direction.png" style="display: none">
+<img id="direction" src="../Resource/img/direction.png" style="display: none">
 
 <div class="title"> 
 	<input id="titleproject" type="text"  value="Untitle"></input>
 </div>
 
 <div class="container-menu">
-	<div title="novo projeto" class="bt">
-		<i class="far fa-file"></i>
+	<div id="new-project" title="novo projeto" class="bt">
+		<i class="far fa-folder"></i>
 	</div>
-	
-	<div title="salvar projeto" class="bt">
-		<i class="far fa-save"></i>
-	</div>
-	
+
 	
 	<div title="exportar como img" class="bt">
 		<i class="far fa-image"></i>
 	</div>
-	<div title="exportar visualizador" class="bt">
-		<i class="far fa-file-archive"></i>
-	</div>
 	
-	<div title="exportar json" class="bt">
+	
+	
+	<div title="exportar codigo" class="bt">
 		<i class="far fa-file-code"></i>
 	</div>
 	
@@ -223,44 +218,46 @@ body{
 	<div class="h-scene">
 	Cenas
 	</div>
-	<div class="scene">
-	1
-	</div>
-	<div class="scene">
-	2
-	</div>
-	<div class="scene">
-	3
-	</div>
+	
 	
 	<div class="scene active">
 	+
 	</div>
 </div>
 
+<input id="file-project" accept="xml" type="file" >
 
-<script src="Model/reader.js"></script>
+<script src="../Model/reader.js"></script>
 
-<script src="View/main.js"></script>
+<script src="../View/main.js"></script>
 
-<script src="Model/code.js"></script>
-<script src="Model/scene.js"></script>
-<script src="Model/ball.js"></script>
-<script src="Model/retangle.js"></script>
-<script src="Model/square.js"></script>
-<script src="Model/text.js"></script>
-<script src="Model/arrow.js"></script>
-<script src="Model/animation.js"></script>
+<script src="../Model/code.js"></script>
+<script src="../Model/scene.js"></script>
+<script src="../Model/ball.js"></script>
+<script src="../Model/retangle.js"></script>
+<script src="../Model/square.js"></script>
+<script src="../Model/text.js"></script>
+<script src="../Model/arrow.js"></script>
+<script src="../Model/animation.js"></script>
 
 
-<script src="View/formater.js"></script>
-<script src="View/render.js"></script>
+<script src="../View/formater.js"></script>
+<script src="../View/render.js"></script>
 
-<script src="Resource/script/jquery-3.2.1.min.js"></script>
-<script src="View/menuedit.js"></script>
+<script src="../Resource/script/jquery-3.2.1.min.js"></script>
+<script src="../View/menuedit.js"></script>
 
 
 <script>	
+
+    $("#new-project").click( function(){
+		console.log("click");
+		 $("#file-project").trigger("click");
+	});
+	
+	$('#file-project').change(function () {
+		console.log( URL.createObjectURL(event.target.files[0]) );
+	});
 
 	main = new Main();
 	r = new Reader("teste.xml");

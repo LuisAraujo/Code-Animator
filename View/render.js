@@ -1,11 +1,13 @@
-Render = function(){
+Render = function(id){
 	this.animation;
-	this.ctx = document.getElementById("canvas").getContext("2d");
+	console.log("canvas"+id)
+	this.ctx = document.getElementById("canvas"+id).getContext("2d");
 	this.current_scene = -1;
 	this.w = 400;
 	this.h = 400;
 	this.formater = new Formater();
 	this.timeout;
+	this.id = id;
 }
 
 Render.prototype.stop = function(){
@@ -47,7 +49,7 @@ Render.prototype.prior = function(){
 Render.prototype.reload = function(){
 	
 	this.stop();	
-	this.animation.setCurrentScene( 0);
+	this.animation.setCurrentScene(0);
 	this.cleanAllLines();
 	this.play();
 	
@@ -139,28 +141,29 @@ Render.prototype.loop = function(_this){
 Render.prototype.showScenes = function(){
 	
 	
-  $("#container-scenes").html( "<div class='h-scene'>Cenas</div>");
+  $("#container-scenes"+this.id).html( "<div class='h-scene'>Cenas</div>");
   
   for(var i = 0; i < this.animation.size(); i++)
-	$("#container-scenes").append( "<div tag='"+i+"' class='scene'>"+i+"</div>");
+	$("#container-scenes"+this.id).append( "<div tag='"+i+"' ref='"+this.id+"'  class='scene'>"+i+"</div>");
 	
 	
-	$("#container-scenes").append( "<div class='scene active'>+</div>");
+	$("#container-scenes"+this.id).append( "<div class='scene active' ref='"+this.id+"' >+</div>");
 	
 	$(".scene").click(function(){
-		render.showScene( $(this).attr("tag" ) );
+		 canvasanimations[ $(this).attr("ref")].render.showScene( $(this).attr("tag" ) );
 	});
 }
 
 Render.prototype.showLines = function(code){
 	
-	var divcode = document.getElementById("code");
+	var divcode = document.getElementById("code"+this.id);
 	
 	for(var i = 0; i < code.size(); i++){
 		
 		var span = "<span class='n-line'> " + i + ". </span>  ";
 		
 		var div = document.createElement("div");
+		div.classList.add("line"+ this.id);
 		div.classList.add("line");
 		var text = this.formater.getFormated ( code.get(i) ) 
 		 
@@ -174,7 +177,7 @@ Render.prototype.showLines = function(code){
 
 Render.prototype.setLines = function(){
 	
-	var lines = document.getElementsByClassName("line");
+	var lines = document.getElementsByClassName("line" + this.id);
 	for(var i = 0; i < lines.length; i++){
 		if(i%2 != 0)
 			lines[i].classList.add("i");
@@ -185,14 +188,14 @@ Render.prototype.setLines = function(){
 
 Render.prototype.heightlightLine = function(line){
 	
-	var lines = document.getElementsByClassName("line");
+	var lines = document.getElementsByClassName("line" + this.id);
 	lines[line].classList.add("h");
 
 }
 
 Render.prototype.cleanLine = function(line){
 	
-	var lines = document.getElementsByClassName("line");
+	var lines = document.getElementsByClassName("line" + this.id);
 	lines[line].classList.remove("h");
 
 }
@@ -200,7 +203,7 @@ Render.prototype.cleanLine = function(line){
 
 Render.prototype.cleanAllLines = function(line){
 	
-	var lines = document.getElementsByClassName("line");
+	var lines = document.getElementsByClassName("line" + this.id);
 	for(var i = 0; i < lines.length; i++)
 		lines[i].classList.remove("h");
 

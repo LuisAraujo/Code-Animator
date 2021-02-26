@@ -1,29 +1,33 @@
-$("#play-code").click( function(){
-	
-	render.play();
-	
-});
+setMenuEdit = function(){
 
-$("#stop-code").click( function(){
-	
-	render.stop();
-	
-});
+	$(".play-code").click( function(){
 
-$("#next-code").click( function(){
-	
-	render.next();
-	
-});
+		canvasanimations[$(this).attr("ref")].render.play();
+		
+	});
 
-$("#prior-code").click( function(){
-	
-	render.prior();
-	
-});
+	$(".stop-code").click( function(){
+		
+		canvasanimations[$(this).attr("ref")].render.stop();
+		
+	});
 
-$("#reload-code").click( function(){
-	
-	render.reload();
-	
-});
+	$(".next-code").click( function(){
+		
+		canvasanimations[$(this).attr("ref")].render.next();
+		
+	});
+
+	$(".prior-code").click( function(){
+		
+		canvasanimations[$(this).attr("ref")].render.prior();
+		
+	});
+
+	$(".reload-code").click( function(){
+		
+		canvasanimations[$(this).attr("ref")].render.reload();
+		
+	});
+
+}
