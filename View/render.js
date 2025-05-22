@@ -1,19 +1,27 @@
-Render = function(id){
+Render = function(id, w, h){
 	this.animation;
 	console.log("canvas"+id)
-	this.ctx = document.getElementById("canvas"+id).getContext("2d");
+	this.canvas = document.getElementById("canvas"+id);
+	this.ctx = this.canvas.getContext("2d");
+	this.w = w;
+	this.h = h;
 	this.current_scene = -1;
-	this.w = 400;
-	this.h = 400;
 	this.formater = new Formater();
 	this.timeout;
 	this.id = id;
 }
 
+Render.prototype.configPixelRatio = function(){
+	const ratio = window.devicePixelRatio;
+    this.canvas.width = this.w * ratio;
+    this.canvas.height = this.h * ratio;
+    this.canvas.style.width = this.w + "px";
+    this.canvas.style.height = this.h + "px";
+   	this.canvas.getContext("2d").scale(ratio, ratio);
+}
+
 Render.prototype.stop = function(){
-	
-	clearTimeout(this.timeout);
-	
+	clearTimeout(this.timeout);	
 }
 
 Render.prototype.next = function(){
@@ -76,12 +84,13 @@ Render.prototype.start = function(){
 
 Render.prototype.updateScene  = function(_this, only){
 	
+	console.log(this.animation.getIndexNext());
 
 	if( _this.animation.getIndexCurrentScene() <  _this.animation.size() -1 ) {
-		
-		_this.animation.setCurrentScene( _this.animation.getIndexCurrentScene() + 1);
-		
-		this.cleanLine(_this.animation.getIndexCurrentScene()-1);
+		this.cleanLine(_this.animation.getIndexCurrentScene());
+		//_this.animation.setCurrentScene( _this.animation.getIndexCurrentScene() + 1);
+		_this.animation.setCurrentScene( this.animation.getIndexNext() );
+		//this.cleanLine(_this.animation.getIndexCurrentScene()-1);
 		
 		this.heightlightLine(_this.animation.getCurrentScene().getLineCode());
 		
@@ -123,13 +132,14 @@ Render.prototype.printall = function(){
 	var scene = this.animation.getCurrentScene();
 	
 	this.ctx.clearRect(0,0,this.w,this.h);
-	
+	//this.ctx.font = "30px Arial";
 	if(scene != undefined){
 	
 		for(i=0; i < scene.size(); i++){
 			scene.get(i).print(this.ctx);
 		};
 	}
+
 }	
 
 Render.prototype.loop = function(_this){	
@@ -154,6 +164,7 @@ Render.prototype.showScenes = function(){
 	});
 }
 
+//Print all lines of code
 Render.prototype.showLines = function(code){
 	
 	var divcode = document.getElementById("code"+this.id);

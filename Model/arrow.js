@@ -1,9 +1,10 @@
-function Arrow(id, x1, y1, x2, y2, color, linew, angle){
+function Arrow(id, x1, y1, size, color, linew, angle){
 	this.id = id;
 	this.x1 = x1;
-	this.x2 = x2;
+	this.x2 = x1; //x2
 	this.y1 = y1;
-	this.y2 = y2;
+	this.y2 = y1-size;
+	console.log(color);
 	this.color = color;
 	this.linew = linew;
 	this.angle = angle;
@@ -13,9 +14,9 @@ Arrow.prototype.print = function(ctx){
 		ctx.save();
 		
 		ctx.beginPath();
-		
-		
-		
+		ctx.fillStyle = this.color;
+		ctx.strokeStyle= this.color;
+		console.log(this.color);
 		ctx.lineWidth = this.linew;
 		
 		var angle = this.angle * Math.PI / 180;
@@ -26,14 +27,15 @@ Arrow.prototype.print = function(ctx){
 		ctx.rotate(angle);
 		ctx.translate(-midX, -midY);
 		
-		ctx.drawImage(window.main.direction,  this.x2  , this.y2-5, 10, 10);
 		
 		ctx.moveTo(this.x1,this.y1);
 		ctx.lineTo(this.x2, this.y2);
 		ctx.stroke();
 		
+		ctx.drawImage(window.main.direction,  this.x2-5  , this.y2-5, 10, 10);
+		
 		ctx.restore();
-
+		
 
 }
 

@@ -1,0 +1,49 @@
+<project>
+	<name>Inserindo na Pilha Vazia</name>
+	<author>Luis Araujo</author>
+	<code>void push(Pilha *pilha, int valor) {@if (pilha_cheia(pilha)) {@jump	printf("Pilha cheia!\n") ;@jump	return ;@jump}@pilha->topo++ ;@pilha->vetor[pilha->topo] = valor ;@}</code>
+	<scenes>
+		<scene1>
+			<code></code>
+			<copyelements>0</copyelements>
+			<elems><rect>60;60;300;340;#000;#fff;2</rect><rect>60;60;300;280;#000;#fff;2</rect><rect>60;60;300;220;#000;#fff;2</rect><rect>60;60;300;160;#000;#fff;2</rect><text>Pilha pilha;20;280;430;#000</text><text>int valor = 10;20;50;400;#000</text><arrow>420;405;20;#000;5;-90</arrow><text>topo = -1;20;420;420;#000</text></elems>
+		</scene1>
+
+		<scene2>
+			<code></code>
+			<copyelements>0</copyelements>
+			<elems><rect>60;60;300;340;#000;#fff;2</rect><rect>60;60;300;280;#000;#fff;2</rect><rect>60;60;300;220;#000;#fff;2</rect><rect>60;60;300;160;#000;#fff;2</rect><text>Pilha pilha;20;280;430;#000</text><text>int valor = 10;20;50;400;#000</text><arrow>420;405;20;#000;5;-90</arrow><text>topo = -1;20;420;420;#000</text></elems>
+		</scene2>
+
+		<scene3>
+			<code></code>
+			<copyelements>0</copyelements>
+			<elems></elems>
+		</scene3>
+
+
+		<scene4>
+			<code></code>
+			<copyelements>0</copyelements>
+			<elems></elems>
+		</scene4>
+
+		<scene5>
+			<code></code>
+			<copyelements>0</copyelements>
+			<elems></elems>
+		</scene5>
+
+		<scene6>
+			<code></code>
+			<copyelements>0</copyelements>
+			<elems><rect>60;60;300;340;#000;#fff;2</rect><rect>60;60;300;280;#000;#fff;2</rect><rect>60;60;300;220;#000;#fff;2</rect><rect>60;60;300;160;#000;#fff;2</rect><text>Pilha pilha;20;280;430;#000</text><text>int valor = 10;20;50;400;#000</text><arrow>420;365;20;#000;5;-90</arrow><text>topo = 0;20;420;380;#000</text></elems>
+		</scene6>
+
+		<scene6>
+			<code></code>
+			<copyelements>0</copyelements>
+			<elems><rect>60;60;300;340;#000;#ff5;2</rect><rect>60;60;300;280;#000;#fff;2</rect><rect>60;60;300;220;#000;#fff;2</rect><rect>60;60;300;160;#000;#fff;2</rect><text>Pilha pilha;20;280;430;#000</text><text>int valor = 10;20;50;400;#000</text><arrow>420;365;20;#000;5;-90</arrow><text>topo = 0;20;420;380;#000</text><text>10;30;315;380;#000</text></elems>
+		</scene6>
+	</scenes>
+</project>

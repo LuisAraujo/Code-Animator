@@ -29,5 +29,14 @@ setMenuEdit = function(){
 		canvasanimations[$(this).attr("ref")].render.reload();
 		
 	});
+	$(".export-image").click( function(){
+		alert("Função Indisponível no momento!")
+	});
+
+	$(".export-code").click( function(){
+		alert("Função Indisponível no momento!")
+	});
+
+
 
 }

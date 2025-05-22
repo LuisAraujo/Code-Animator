@@ -32,6 +32,16 @@ Animation.prototype.getIndexCurrentScene = function(){
 }
 
 
+Animation.prototype.getIndexNext = function(){
+	let i =0;
+	for(i = this.current_scene+1; i < this.size(); i++)
+		if(this.code.texts[i].includes("jump"))
+			continue;
+		else
+			break;
+	
+	return i;
+}
 
 Animation.prototype.setScene = function(scenes){
 	
@@ -50,5 +60,12 @@ Animation.prototype.addScene = function(scene){
 Animation.prototype.setCode = function(code){
 	
 	this.code = code;
+	
+}
+
+
+Animation.prototype.getCode = function(){
+	
+	return this.code;
 	
 }

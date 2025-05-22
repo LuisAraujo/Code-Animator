@@ -5,8 +5,8 @@ function Text(id, text, size, x, y, color, font, line){
 	this.text = text;
 	this.color = color;
 	this.line = line;
-	this.size = size?size:30;
-	this.font = font?font:"Arial";
+	this.size = size?size:40;
+	this.font = font?font:"Times new Roman";
 };
 
 
@@ -17,6 +17,7 @@ Text.prototype.setText = function(text){
 
 Text.prototype.print = function(ctx){
 	ctx.save();
+	
 	
 	ctx.font = this.size + "px " + this.font;
 	ctx.fillStyle = this.color;

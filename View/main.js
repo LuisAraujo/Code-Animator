@@ -1,4 +1,4 @@
-Main = function(id){
+Main = function(id, w, h){
 	this.direction = document.getElementById("direction");
 	this.currentLine = 0;
 	this.scenes = [];	
@@ -6,6 +6,8 @@ Main = function(id){
 	this.currente_id = 0;
 	this.render = null;
 	this.id = id;
+	this.w = w;
+	this.h = h;
 }
 
 Main.prototype.createScene = function(){
@@ -32,12 +34,13 @@ Main.prototype.setCode = function(code){
 
 Main.prototype.start = function(){
 	
-	this.render = new Render(this.id);
-	
+	this.render = new Render(this.id, this.w, this.h);
+	this.render.configPixelRatio();
+
 	var animation = new Animation();
 	animation.setScene( this.scenes );
 	animation.setCode ( this.code );
-	
+
 	animation.setCurrentScene(0);	
 	this.render.setAnimation(animation);
 	
@@ -94,18 +97,15 @@ Main.prototype.start = function(){
 	scene8.setAll ( scene7.getAll() ) ;
 	scene8.set( new Text(11,"10", 30, 225, 150, "#d00"), 5);
 	this.scenes.push(scene8)
-
-	
-	
 	
 	this.code = new Code(["var a;","a = 10;","var b;","b = 20;","var c;","c = a;","a = b;","b = c;"]);*/
 	
 }
 
 Main.prototype.loadProject = function(reader){
-	
+
 	 var name = reader.getNode('name').innerHTML;
-	 $("#titleproject"+this.id).val(name);
+	 $("#titleproject"+this.id).html(name);
 	 var author = reader.getNode('author').innerHTML;
 	 
 	 for (var i = 0; i < reader.getSize('scenes'); i++) {
@@ -115,7 +115,6 @@ Main.prototype.loadProject = function(reader){
 			currrent_scene = this.createScene();
 			
 			this.setCode(code);
-			
 			
 			for (var j = 0; j <subnode.childNodes.length; j++){
 
@@ -136,10 +135,19 @@ Main.prototype.loadProject = function(reader){
 						new Text(id, elem[0], parseInt(elem[1]), parseInt(elem[2]), parseInt(elem[3]), elem[4])
 					);
 					
+				}else if(elem_type == "arrow"){
+					//console.log("arrow");
+					//console.log(id,elem);
+						
+					currrent_scene.add(
+						//x1, x2,y1,y2,color, linew, angle
+						new Arrow(id,elem[0], elem[1], elem[2], elem[3], elem[4], elem[5])
+						//new Arrow(id,100,40,100,20,"#000",5,-90)
+					)
 				}
 			}
 			
-			
 	  }
+	  
   
   }

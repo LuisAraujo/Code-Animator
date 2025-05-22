@@ -1,14 +1,14 @@
-createCanvas = function(parent, id){
+createCanvas = function(parent, id, canvaswidth, canvasheight){
 
 		var element = '<div class="viwer-animation-code"><div class="title">';
 		
-		element += '<input id="titleproject'+id+'" type="text" value="Untitle"></input></div>'
+		element += '<div id="titleproject'+id+'" class="title"></div></div>'
 
 		element += '<div class="container-menu">'
 
-		element += '<div title="exportar como img" class="bt"><i class="far fa-image"></i></div>'
+		element += '<div class="bt export-image" title="exportar como img" ref="'+id+'"><i class="far fa-image"></i></div>'
 			
-		element += '<div title="exportar codigo" class="bt"><i class="far fa-file-code"></i></div></div>'
+		element += '<div  class="bt export-code" title="exportar codigo" ref="'+id+'"><i class="far fa-file-code"></i></div></div>'
 			
 
 		element += '<div class="container-code" id="container-code'+id+'">'
@@ -26,7 +26,7 @@ createCanvas = function(parent, id){
 		element +='<div id="code'+id+'"></div></div>'
 
 		element +='<div class="container-canvas" id="container-canvas">'
-		element +='<canvas class="canvas" id="canvas'+id+'" width="800px" height="320px"> </canvas></div>'
+		element +='<canvas class="canvas" id="canvas'+id+'" width="'+canvaswidth+'px" height="'+canvasheight+'px"> </canvas></div>'
 
 		element +='<div class="container-scenes" id="container-scenes'+id+'"><div class="h-scene">Cenas</div></div>'
 
@@ -38,10 +38,11 @@ createCanvas = function(parent, id){
 	
 canvasanimations = [];
 elems = $(".teste");
-
+var canvaswidth = 800;
+var canvasheight = 450;
 for(let i =0; i < elems.length; i++){
-	createCanvas( elems[i], i);
-	main = new Main(i);
+	createCanvas( elems[i], i, canvaswidth, canvasheight);
+	main = new Main(i, canvaswidth, canvasheight);
 	main.loadProject(new Reader( $(elems[i]).attr("filename")));
 	main.start();
 	canvasanimations.push(main);
